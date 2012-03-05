@@ -53,7 +53,7 @@ class Reader < EventMachine::FileTail
 	ip = log[11]
         user = log[9]
         #checks for login attempts to non user
-        if ip == "invalid"
+        if user == "invalid"
           ip = log[13]
           user = log[11]
         end
