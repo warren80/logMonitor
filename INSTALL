@@ -1,0 +1,18 @@
+Step 1: install mysql
+
+fedora 16
+$yum install mysql mysql-server
+fedora 12-15
+$yum --enablerepo=remi install mysql mysql-server
+
+Step 2: start mysql
+
+$/bin/systemctl start mysqld.service #starts sql server
+$/bin/systemctl enable mysqld.service #sets mysql to restart on boot
+
+Step 3: setup database in mysql
+
+$mysql -u root < dbSetup.sql
+
+$ruby eventLogger.rb <failed attempts> <ban length in minutes> <logfile>
+
