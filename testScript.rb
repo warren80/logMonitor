@@ -1,5 +1,3 @@
-#require "rubygems"
-
 
 #Botnet test if different ips try to crack password
 #should block all but first few attemts

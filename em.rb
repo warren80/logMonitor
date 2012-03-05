@@ -52,6 +52,12 @@ class Reader < EventMachine::FileTail
 	time = log[3].split(/:/)
 	ip = log[11]
         user = log[9]
+        #checks for login attempts to non user
+        if ip == "invalid"
+          ip = log[13]
+          user = log[11]
+        end
+
 	datetime = Time.utc(
 	  Time.now.year, log[0], log[2], 
 	  time[0], time[1], time[2])
@@ -75,7 +81,7 @@ def main(args)
   Reader.limit(args[1])
   Reader.errorTime(args[2])
   Reader.blockTime(args[3])
-printf("%s\n", args[0])
+  printf("Monitoring: %s\n", args[0])
   EventMachine.run do
     EventMachine::file_tail(args[0], Reader)
   end
