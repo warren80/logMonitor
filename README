@@ -1,0 +1,15 @@
+Files List
+
+database.rb:	Database access file
+em.rb:		Entrypoint and EventMachine
+INSTALL:	Installation Guilde
+setup.sh:	Automatic script to run file
+index.html:	output of logs
+README: 	This file
+testScript.rb:	Used to verify succesful results (see index.html for succes)
+webout.rb:	creates the index.html file
+dbSetup.sql:	Used to create tables in database
+
+
+Run by typing 
+#ruby em.rb <file> <allowed attempts> <Length of time for bad attempts> <Block Length>

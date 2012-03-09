@@ -1,3 +1,8 @@
+On Fedora 16 run the setup.sh shell script with an internet connection and as root
+. setup.sh
+
+otherwise follow the following directions
+
 Step 1: install mysql
 
 fedora 16
@@ -14,5 +19,8 @@ Step 3: setup database in mysql
 
 $mysql -u root < dbSetup.sql
 
-$ruby eventLogger.rb <failed attempts> <ban length in minutes> <logfile>
+step 4: install ruby and gems
+
+step5: run the program
+$ruby em.rb <failed attempts> <ban length in minutes> <logfile>
 

@@ -1,3 +1,16 @@
+#######################################################################
+# Program:  	Event Logger
+# File:     	webout.rb
+#		
+# Functions:	create(table)
+#
+# Date: 	Mar 5, 2012
+# Designer: 	Warren Voelkl
+# Programmer: 	Warren Voelkl
+#
+# Notes:	creates a webpage called index.html which displays
+#		the contents of the tabular data passed in
+#######################################################################
 class Webout
 @@head = "<html>
 <body>
@@ -14,7 +27,11 @@ class Webout
 </body>
 </html>
 "
-
+  #####################################################################
+  # Function:   create(table)
+  # returns: 	void
+  # Notes: 	opens a file named index.html and writes to file
+  #####################################################################
   def Webout.create(table)
     f = File.new('index.html', 'w')
     f.puts @@head
