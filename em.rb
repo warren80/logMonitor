@@ -116,17 +116,22 @@ class Reader < EventMachine::FileTail
     @buffer.extract(data).each do |buf|
       buf.split(/"\n"/).each do |line|
       	log = line.split(/ /)
-      	if log[6] == 'Failed' && log[7] == 'password'
-	  time = log[3].split(/:/)
-    	  ip = log[11]
-          user = log[9]
+	offset = 5
+        if log[offset + 1] == 'Failed'
+          offset += 1
+        end
+      	if log[offset] == 'Failed' && log[offset + 1] == 'password'
+	    time = log[offset - 2].split(/:/)
+    	  ip = log[offset + 5]
+          user = log[offset + 3]
           #checks for login attempts to non user
           if user == "invalid"
-            ip = log[13]
-            user = log[11]
+            ip = log[offset + 7]
+            user = log[offset + 5]
           end
+		  
 	  datetime = Time.utc(
-	    Time.now.year, log[0], log[2], 
+	    Time.now.year, log[0], log[offset - 3], 
 	    time[0], time[1], time[2])
 	  PasswordDB.insertRecord(ip, user, datetime)
 	  result = PasswordDB.getRecentAttempts(user, datetime, 
