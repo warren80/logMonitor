@@ -19,7 +19,8 @@ require 'mysql'
 ActiveRecord::Base.establish_connection(
 :adapter=> "mysql",
 :host => "localhost",
-:database=> "eventLogger"
+:database=> "eventLogger",
+:reconnect=> "true"
 )
 
 
